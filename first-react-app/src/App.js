@@ -1,76 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
-import CurrencyRate from './CurrencyRate.js'
+import Header from './Header.js';
+import Footer from './Footer.js';
+import CurrencyExchange from './CurrencyExchange.js';
+import CurrencyRate from './CurrencyRate.js';
+import CurrencyTable from './CurrencyTable';
 
-const BASE_URL = 'https://api.exchangeratesapi.io/latest'
-
-function App() {
-  const [currencyOptions, setCurrencyOptions] = useState([])
-  const [fromCurrency, setFromCurrency] = useState()
-  const [toCurrency, setToCurrency] = useState()
-  const [exchangeRate, setExchangeRate] = useState()
-  const [amount, setAmount] = useState(1)
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-
-  let toAmount, fromAmount
-  if (amountInFromCurrency) {
-    fromAmount = amount
-    toAmount = amount * exchangeRate
-  } else {
-    toAmount = amount
-    fromAmount = amount / exchangeRate
-  }
-
-  useEffect(() => {
-    fetch(BASE_URL)
-      .then(res => res.json())
-      .then(data => {
-        const firstCurrency = Object.keys(data.rates)[0]
-        setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-        setFromCurrency(data.base)
-        setToCurrency(firstCurrency)
-        setExchangeRate(data.rates[firstCurrency])
-      })
-  }, [])
-
-  useEffect(() => {
-    if (fromCurrency != null && toCurrency != null) {
-      fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-        .then(res => res.json())
-        .then(data => setExchangeRate(data.rates[toCurrency]))
-    }
-  }, [fromCurrency, toCurrency])
-
-  function handleFromAmountChange(e) {
-    setAmount(e.target.value)
-    setAmountInFromCurrency(true)
-  }
-
-  function handleToAmountChange(e) {
-    setAmount(e.target.value)
-    setAmountInFromCurrency(false)
-  }
-
+const Exchange = () => {
   return (
-    <>
-      <h1>Convert</h1>
-      <CurrencyRate
-        currencyOptions={currencyOptions}
-        selectedCurrency={fromCurrency}
-        onChangeCurrency={e => setFromCurrency(e.target.value)}
-        onChangeAmount={handleFromAmountChange}
-        amount={fromAmount}
-      />
-      <div className="equals">=</div>
-      <CurrencyRate
-        currencyOptions={currencyOptions}
-        selectedCurrency={toCurrency}
-        onChangeCurrency={e => setToCurrency(e.target.value)}
-        onChangeAmount={handleToAmountChange}
-        amount={toAmount}
-      />
-    </>
-  );
+    <div>
+      <CurrencyExchange/>
+    </div>
+  )
+}
+
+const Table = () => {
+  return (
+    <div>
+      <CurrencyTable/>
+    </div>
+  )
+}
+
+class App extends Component {
+  render () {
+    return (
+      <div className='page-container'>
+      <div className='content-wrap'>
+
+        <Router>
+          <div className='App'>
+            <Header />
+              <nav>
+                <ul>
+                  <li>
+                    <Link to='/'>Home</Link>
+                  </li>
+                  <li>
+                    <Link to='/CurrencyExchange'>Currency Exchange</Link>
+                  </li>
+                  <li>
+                    <Link to='/CurrencyTable'>Currency Table</Link>
+                  </li>
+                </ul>
+              </nav>
+              <Switch>
+                <Route path='/CurrencyExchange'>
+                  <CurrencyExchange />
+                </Route>
+                <Route path='/CurrencyTable'>
+                  <CurrencyTable />
+                </Route>
+              </Switch>
+            <Footer/>
+          </div>
+        </Router>
+      </div>
+      </div>
+    )
+  }
 }
 
 export default App;

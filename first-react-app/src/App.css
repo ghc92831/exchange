@@ -1,29 +1,40 @@
 body {
+  background-image: url(./images/pb.jpg);
   margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   text-align: center;
+  min-height: 100vh;
+  color: grey;
+  font-family: Fixed, monospace;
 }
 
-h1 {
-  margin: 0;
-  margin-bottom: .5rem;
+ul {
+    list-style-type: none;
 }
 
-.input {
-  border: 1px solid #333;
-  border-radius: .3em;
-  padding: .25rem;
-  width: 7em;
+.App-header {
+  font-size: 40px;
 }
 
-select {
-  margin-left: .5rem;
+table {
+  margin-left: 200px;
 }
 
-.equals {
-  font-weight: bold;
-  font-size: 2rem;
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
+}
+
+.main-footer {
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  text-align: center;
+  width: 100%;
 }
