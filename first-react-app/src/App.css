@@ -3,13 +3,13 @@ body {
   margin: 0;
   display: flex;
   text-align: center;
-  min-height: 100vh;
   color: grey;
   font-family: Fixed, monospace;
+  padding-bottom: 60px;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .App-header {
@@ -31,10 +31,11 @@ table {
 }
 
 .main-footer {
-  position: absolute;
-  left:0;
-  bottom:0;
-  right:0;
-  text-align: center;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  height: 120px;
+  text-align: right;
   width: 100%;
+  margin-left: -50px;
 }
