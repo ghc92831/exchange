@@ -20,14 +20,6 @@ table {
   margin-left: 200px;
 }
 
-.chart-title h1 {
-  display: flex;
-  text-align: center;
-  font-weight: lighter;
-  margin-top: 100px;
-  font-size: 40px;
-}
-
 .page-container {
   display: flex;
   flex-direction: column;

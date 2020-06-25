@@ -89,10 +89,8 @@ getHistoricalRates = (base, other) => {
 
 render () {
   return (
-    <div className='chart-title'>
-      <h1 id='chartheading'>Historical Currency Rate Comparison</h1>
-      <hr></hr>
-      <p className='chart-info'>Chart displays the past 30 days of currency rates selected</p>
+    <div className='h-chart'>
+      <h1 id='chartheading'>Historical Currency Rate</h1>
       <p className='base'>Base Currency:</p>
       <select onChange={this.handleChangeBase}>
         {countryList.map((country) => <option key={country} label={country} value={country}></option>)}
