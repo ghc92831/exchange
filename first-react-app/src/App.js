@@ -6,6 +6,7 @@ import Footer from './Footer.js';
 import CurrencyExchange from './CurrencyExchange.js';
 import CurrencyRate from './CurrencyRate.js';
 import CurrencyTable from './CurrencyTable';
+import HChart from './HChart.js';
 
 const Exchange = () => {
   return (
@@ -19,6 +20,14 @@ const Table = () => {
   return (
     <div>
       <CurrencyTable/>
+    </div>
+  )
+}
+
+const HistoricalChart = () => {
+  return (
+    <div>
+      <HChart />
     </div>
   )
 }
@@ -43,6 +52,9 @@ class App extends Component {
                   <li>
                     <Link to='/CurrencyTable'>Currency Table</Link>
                   </li>
+                  <li>
+                    <Link to='/HChart'>Historical Chart</Link>
+                  </li>
                 </ul>
               </nav>
               <Switch>
@@ -51,6 +63,9 @@ class App extends Component {
                 </Route>
                 <Route path='/CurrencyTable'>
                   <CurrencyTable />
+                </Route>
+                <Route path='/HChart'>
+                  <HChart />
                 </Route>
               </Switch>
             <Footer/>
