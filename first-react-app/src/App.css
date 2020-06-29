@@ -20,6 +20,18 @@ table {
   margin-left: 200px;
 }
 
+netlify2
+.chart-title h1 {
+  display: flex;
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 #chartheading {
+  text-align: center;
+  text-decoration: underline;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
