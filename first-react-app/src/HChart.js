@@ -104,6 +104,7 @@ render () {
         <canvas ref={this.chartRef} />
       </div>
     </div>
+    </div>
     )
   }
 }
