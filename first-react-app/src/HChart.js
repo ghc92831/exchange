@@ -90,6 +90,7 @@ getHistoricalRates = (base, other) => {
 render () {
   return (
     <div className='chart-title'>
+    <div className='h-chart'>
       <h1 id='chartheading'>Historical Currency Rate</h1>
       <p className='base'>Base Currency:</p>
       <select onChange={this.handleChangeBase}>
